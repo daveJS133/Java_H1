@@ -2,7 +2,7 @@
 
 public interface Collectable {
   String getName();
-  void addItem();
+  // void addItem();
   int itemCount();
 
 }
