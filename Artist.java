@@ -1,46 +1,31 @@
-class Artist{
+import java.util.*;
+
+class Artist implements Collectable{
   private String name;
-  private int trackCount;
   private int age;
-  private Album[] album;
+  private ArrayList<Collectable> discography;
 
-  public Artist(String name, int trackCount, int age){
+
+  public Artist(String name, int age){
     this.name = name;
-    this.trackCount = 5;
     this.age = age;
-    this.album = Album[trackCount];
-
+    this.discography = new ArrayList<Collectable>();
   }
 
   public String getName(){
     return this.name;
   }
 
-  public void addTrack(Song track){
-    if (isAlbumFull()) return;
-
-    int trackCount = trackCount();
-    album[trackCount] = track;
+  public void addItem(Album album){
+    discography.add(album);
   }
 
-  public int trackCount(){
-    int count = 0;
-    for(Song track : album) {
-      if(track != null) {
-        count += 1;
-      }
-    }
-    return count;
+  public int itemCount(){
+    return discography.size();
   }
 
-  public boolean isAlbumFull() {
-    return trackCount() == album.length;
+  public void clearDiscography(){
+    discography.clear();
   }
-
-  public void clearAlbum(){
-    for(Song track : album) {
-      track = null; 
-    }
-  }
-
 }
+
